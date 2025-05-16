@@ -88,11 +88,11 @@ title = "About this software"
 ok_button_text = "Dismiss"
 dialog_text = "This software is open source software, governed by the GPL-V3 software license.
 
-The purpose of this program is to streamline the work done in the El Dorado County Library in the 3D print lab.
+The purpose of this program is to streamline the work done in a local 3D print lab, though it's use may suit other cases.
 
 Software designed by Laserology. For future software support, contact help@laserology.net.
 
-https://www.github.com/laserology/library-tracker/
+https://www.github.com/Laserology/library-tracker/
 https://laserology.net/"
 
 [node name="GenericPopup" type="AcceptDialog" parent="."]
