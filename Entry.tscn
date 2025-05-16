@@ -1,0 +1,332 @@
+[gd_scene load_steps=12 format=3 uid="uid://c2xplms4le5oj"]
+
+[ext_resource type="Script" uid="uid://dvg4l7a0bxblg" path="res://Entry.gd" id="1_iruo5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ct6j"]
+bg_color = Color(0.117647, 0.564706, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2j13"]
+bg_color = Color(0, 0, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjfo2"]
+bg_color = Color(0.254902, 0.411765, 0.882353, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otnf8"]
+bg_color = Color(0.862745, 0.0784314, 0.235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rseui"]
+bg_color = Color(0.545098, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7ngf"]
+bg_color = Color(0.698039, 0.133333, 0.133333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_tmnxg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iruo5"]
+bg_color = Color(0.133333, 0.545098, 0.133333, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5h0"]
+bg_color = Color(0, 0.392157, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62p0r"]
+bg_color = Color(0, 0.501961, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iruo5")
+
+[node name="ConfirmDelete" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+
+[node name="ConfirmSave" type="ConfirmationDialog" parent="."]
+unique_name_in_owner = true
+
+[node name="AboutPopup" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+title = "About this software"
+ok_button_text = "Dismiss"
+dialog_text = "This software is open source software, governed by the GPL-V3 software license.
+
+The purpose of this program is to streamline the work done in the El Dorado County Library in the 3D print lab.
+
+Software designed by Laserology. For future software support, contact help@laserology.net.
+
+https://www.github.com/laserology/library-tracker/
+https://laserology.net/"
+
+[node name="GenericPopup" type="AcceptDialog" parent="."]
+unique_name_in_owner = true
+
+[node name="ProjectList" type="ItemList" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 154.0
+offset_right = 300.0
+offset_bottom = 764.0
+focus_mode = 0
+
+[node name="ProjectControls" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 620.0
+offset_right = 1018.0
+offset_bottom = 764.0
+
+[node name="SaveProject" type="Button" parent="ProjectControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ct6j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l2j13")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sjfo2")
+text = "✓ Save Project"
+
+[node name="DeleteProject" type="Button" parent="ProjectControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_otnf8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rseui")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u7ngf")
+text = "X Delete Project"
+
+[node name="Button" type="Button" parent="ProjectControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "About..."
+
+[node name="ProjectDetails" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 4.0
+offset_right = 816.0
+offset_bottom = 516.0
+
+[node name="Label" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Project name"
+
+[node name="ProjectName" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_tmnxg")
+placeholder_text = "Enter Project Name..."
+
+[node name="Label2" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Cardholder Name"
+
+[node name="ProjectRequester" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Enter Cardholder Name..."
+
+[node name="Label3" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Project ID"
+
+[node name="ProjectID" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Enter Project Number..."
+
+[node name="Label4" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Project Platform"
+
+[node name="ProjectSource" type="OptionButton" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "Thingiverse"
+popup/item_0/id = 0
+popup/item_1/text = "Printables"
+popup/item_1/id = 1
+popup/item_2/text = "Other/Custom "
+popup/item_2/id = 2
+
+[node name="Label5" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Library Card Number"
+
+[node name="CardNumber" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Enter Library Card..."
+
+[node name="Label6" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Project Color"
+
+[node name="ProjectColor" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Enter Project Color..."
+
+[node name="Label7" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Aproved By"
+
+[node name="ApprovedBy" type="TextEdit" parent="ProjectDetails"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Approved By..."
+
+[node name="Label8" type="Label" parent="ProjectDetails"]
+layout_mode = 2
+text = "Project Notes"
+
+[node name="ProjectNotes" type="TextEdit" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 304.0
+offset_top = 516.0
+offset_right = 816.0
+offset_bottom = 764.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Enter project notes..."
+
+[node name="Extras" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 4.0
+offset_right = 1020.0
+offset_bottom = 260.0
+
+[node name="CheckButton" type="CheckButton" parent="Extras"]
+layout_mode = 2
+focus_mode = 0
+text = "Project Completed?"
+
+[node name="LastUpdated" type="Label" parent="Extras"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Updated on: Never"
+
+[node name="LastUsedCard" type="Label" parent="Extras"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Card never used"
+
+[node name="ListControls" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 300.0
+offset_bottom = 152.0
+columns = 2
+
+[node name="SetFilter" type="Button" parent="ListControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "Apply Filter"
+
+[node name="ClearFilter" type="Button" parent="ListControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "Clear Filter"
+
+[node name="SearchBox" type="TextEdit" parent="ListControls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "Enter search..."
+
+[node name="OptionButton" type="OptionButton" parent="ListControls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+selected = 0
+item_count = 3
+popup/item_0/text = "Title"
+popup/item_0/id = 0
+popup/item_1/text = "Description"
+popup/item_1/id = 1
+popup/item_2/text = "Card #"
+popup/item_2/id = 2
+
+[node name="AddProject" type="Button" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 300.0
+offset_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_iruo5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4j5h0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_62p0r")
+text = "+ Add New"
+
+[connection signal="confirmed" from="ConfirmDelete" to="." method="_on_confirm_delete_confirmed"]
+[connection signal="confirmed" from="ConfirmSave" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="item_clicked" from="ProjectList" to="." method="_on_project_list_item_clicked"]
+[connection signal="button_up" from="ProjectControls/SaveProject" to="." method="_on_save_project_button_up"]
+[connection signal="button_up" from="ProjectControls/DeleteProject" to="." method="_on_delete_project_button_up"]
+[connection signal="button_up" from="ProjectControls/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="ListControls/SetFilter" to="." method="_on_set_filter_button_up"]
+[connection signal="button_up" from="ListControls/ClearFilter" to="." method="_on_clear_filter_button_up"]
+[connection signal="button_up" from="AddProject" to="." method="_on_add_project_button_up"]
