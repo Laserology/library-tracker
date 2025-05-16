@@ -88,15 +88,23 @@ title = "About this software"
 ok_button_text = "Dismiss"
 dialog_text = "This software is open source software, governed by the GPL-V3 software license.
 
-The purpose of this program is to streamline the work done in the El Dorado County Library in the 3D print lab.
+The purpose of this program is to streamline the work done in a local 3D print lab, though it's use may suit other cases.
 
 Software designed by Laserology. For future software support, contact help@laserology.net.
 
-https://www.github.com/laserology/library-tracker/
+https://www.github.com/Laserology/library-tracker/
 https://laserology.net/"
 
 [node name="GenericPopup" type="AcceptDialog" parent="."]
 unique_name_in_owner = true
+
+[node name="FileDialog" type="FileDialog" parent="."]
+unique_name_in_owner = true
+title = "Open File(s)"
+ok_button_text = "Open"
+file_mode = 1
+access = 2
+use_native_dialog = true
 
 [node name="ProjectList" type="ItemList" parent="."]
 unique_name_in_owner = true
@@ -110,9 +118,9 @@ focus_mode = 0
 [node name="ProjectControls" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 822.0
-offset_top = 620.0
+offset_top = 624.0
 offset_right = 1018.0
-offset_bottom = 764.0
+offset_bottom = 768.0
 
 [node name="SaveProject" type="Button" parent="ProjectControls"]
 layout_mode = 2
@@ -140,6 +148,34 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 text = "About..."
+
+[node name="SaveToDisk" type="Button" parent="ProjectControls"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+disabled = true
+text = "Export Attatchments"
+
+[node name="RemoveFiles" type="Button" parent="ProjectControls"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+disabled = true
+text = "Remove Attatchments"
+
+[node name="AddFiles" type="Button" parent="ProjectControls"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "Add Attatchments"
 
 [node name="ProjectDetails" type="GridContainer" parent="."]
 layout_mode = 0
@@ -265,6 +301,12 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Card never used"
 
+[node name="FilesAdded" type="Label" parent="Extras"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Contains 0 attatchments"
+
 [node name="ListControls" type="GridContainer" parent="."]
 layout_mode = 0
 offset_left = 4.0
@@ -323,10 +365,14 @@ text = "+ Add New"
 
 [connection signal="confirmed" from="ConfirmDelete" to="." method="_on_confirm_delete_confirmed"]
 [connection signal="confirmed" from="ConfirmSave" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="files_selected" from="FileDialog" to="." method="_on_file_dialog_files_selected"]
 [connection signal="item_clicked" from="ProjectList" to="." method="_on_project_list_item_clicked"]
 [connection signal="button_up" from="ProjectControls/SaveProject" to="." method="_on_save_project_button_up"]
 [connection signal="button_up" from="ProjectControls/DeleteProject" to="." method="_on_delete_project_button_up"]
 [connection signal="button_up" from="ProjectControls/Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="ProjectControls/SaveToDisk" to="." method="_on_save_to_disk_pressed"]
+[connection signal="pressed" from="ProjectControls/RemoveFiles" to="." method="_on_remove_files_pressed"]
+[connection signal="pressed" from="ProjectControls/AddFiles" to="." method="_on_add_files_pressed"]
 [connection signal="button_up" from="ListControls/SetFilter" to="." method="_on_set_filter_button_up"]
 [connection signal="button_up" from="ListControls/ClearFilter" to="." method="_on_clear_filter_button_up"]
 [connection signal="button_up" from="AddProject" to="." method="_on_add_project_button_up"]

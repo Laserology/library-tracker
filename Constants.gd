@@ -14,6 +14,9 @@ const PROJECT_SOURCE = "ProjectSource"
 const PROJECT_COLOR = "ProjectColor"
 const SIGNATURE = "ApprovedBy"
 const LAST_UPDATED = "LastUpdated"
+const ATTATCHMENTS = "AttatchedFiles"
+
+const EMPTYATTATCHMENT = {"":""}
 
 enum SearchBy {
 	Title,

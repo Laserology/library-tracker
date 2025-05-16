@@ -1,7 +1,7 @@
 extends Control
 
+var SavePath: String = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Library.cfg"
 var Loader: ConfigFile = ConfigFile.new()
-var SavePath: String = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "/Managment.ini"
 
 func _ready() -> void:
 	var E = Loader.load(SavePath)
@@ -24,6 +24,7 @@ func SaveProject() -> void:
 		return
 
 	%LastUpdated.text = Time.get_date_string_from_system()
+	#var Attatchments: Dictionary = Loader.get_value(%ProjectName.text, Constants.ATTATCHMENTS, {})
 	Loader.clear()
 	Loader.load(SavePath)
 	Loader.set_value(%ProjectName.text, Constants.CARD_HOLDER, %ProjectRequester.text)
@@ -34,6 +35,7 @@ func SaveProject() -> void:
 	Loader.set_value(%ProjectName.text, Constants.PROJECT_COLOR, %ProjectColor.text)
 	Loader.set_value(%ProjectName.text, Constants.SIGNATURE, %ApprovedBy.text)
 	Loader.set_value(%ProjectName.text, Constants.LAST_UPDATED, Time.get_unix_time_from_system())
+	#Loader.set_value(%ProjectName.text, Constants.ATTATCHMENTS, Attatchments)
 	Loader.save(SavePath)
 	PopulateList()
 
@@ -48,6 +50,10 @@ func LoadProject(N: String) -> void:
 	%ApprovedBy.text = Loader.get_value(N, Constants.SIGNATURE, "Nobody")
 	%LastUpdated.text = "Updated on: " + Time.get_date_string_from_unix_time(Loader.get_value(N, Constants.LAST_UPDATED, "Never"))
 	%LastUsedCard.text = CheckCardLastUse(%CardNumber.text)
+	#%FilesAdded.text = "Contains " + str(Loader.get_value(N, Constants.ATTATCHMENTS, {}).size()) + " attatchments"
+
+	#%RemoveFiles.disabled = !HasAttatchments()
+	#%SaveToDisk.disabled = %RemoveFiles.disabled
 
 func CheckCardLastUse(CardNumber: String) -> String:
 	var Oldest: int = 0
@@ -107,6 +113,9 @@ func ApplyFilter(Type: Constants.SearchBy, Query: String) -> void:
 				if Loader.get_value(N, "CardNumber", "").contains(Query):
 					%ProjectList.add_item(N)
 
+func HasAttatchments() -> bool:
+	return (Loader.get_value(%ProjectName.text, Constants.ATTATCHMENTS, {}) as Dictionary).size() > 0
+
 func _exit_tree():
 	Loader.set_value(Constants.RESERVED_SECTION, Constants.LOCK_CONST, "UNLOCKED")
 	Loader.save(SavePath)
@@ -115,7 +124,7 @@ func _on_project_list_item_clicked(index, _at_position, _mouse_button_index):
 	LoadProject(%ProjectList.get_item_text(index))
 
 func _on_save_project_button_up() -> void:
-	if Loader.has_section(%ProjectName.text):
+	if Loader.has_section(%ProjectName.text) && Loader.has_section_key(%ProjectName.text, Constants.PROJECT_SOURCE):
 		%ConfirmSave.dialog_text = "You are about to overwrite an existing entry. Continue?"
 		%ConfirmSave.popup_centered()
 		return
@@ -149,3 +158,34 @@ func _on_set_filter_button_up():
 
 func _on_button_button_up() -> void:
 	%AboutPopup.popup_centered()
+
+func _on_save_to_disk_pressed() -> void:
+	if !HasAttatchments():
+		%GenericPopup.dialog_text = "This project doesn't have any files attatched."
+		%GenericPopup.popup_centered()
+		return
+
+	var Attatchments: Dictionary = Loader.get_value(%ProjectName.text, Constants.ATTATCHMENTS)
+	for N in Attatchments:
+		var Writer: FileAccess = FileAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + N, FileAccess.WRITE)
+		Writer.store_buffer(Attatchments[N])
+
+	%GenericPopup.dialog_text = "Saved files to your home folder!"
+	%GenericPopup.popup_centered()
+
+func _on_remove_files_pressed() -> void:
+	if Loader.has_section_key(%ProjectName.text, Constants.ATTATCHMENTS):
+		Loader.erase_section_key(%ProjectName.text, Constants.ATTATCHMENTS)
+		LoadProject(%ProjectName.text)
+
+func _on_add_files_pressed() -> void:
+	%FileDialog.popup_centered()
+
+func _on_file_dialog_files_selected(paths: PackedStringArray) -> void:
+	var Files: Dictionary = Loader.get_value(%ProjectName.text, Constants.ATTATCHMENTS, {})
+	_on_remove_files_pressed()
+	for N in paths:
+		Files[N.get_file()] = FileAccess.get_file_as_bytes(N)
+
+	%FilesAdded.text = "Contains " + str(Files.size()) + " attatchments"
+	Loader.set_value(%ProjectName.text, Constants.ATTATCHMENTS, Files)
