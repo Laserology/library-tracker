@@ -10,8 +10,6 @@ func _ready() -> void:
 		%Dialog.popup_centered()
 		return
 
-	WorkerThreadPool.add_task(CheckUpdate)
-
 	if Loader.get_value(Constants.RESERVED_SECTION, Constants.LOCK_CONST, "UNLOCKED") == "LOCKED":
 		%Confirm.dialog_text = "This program is either already open on another computer at the moment, or it was closed improperly.\n\nTo avoid version mismatch or data corruption, please close this program until other users are finished using the software."
 		%Confirm.popup_centered()
@@ -25,14 +23,6 @@ func _ready() -> void:
 	PopulateList()
 	%ProjectList.select(0)
 	LoadProject(%ProjectList.get_item_text(0))
-
-func CheckUpdate() -> void:
-	var Request: HTTPRequest = HTTPRequest.new()
-	Request.download_file = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS) + "Version.txt"
-	Request.request("https://raw.githubusercontent.com/Laserology/library-tracker/refs/heads/main/Version.txt")
-	var Version: FileAccess = FileAccess.open(Request.download_file, FileAccess.READ)
-	if Version.get_as_text() != "1.0.2":
-		%Dialog.dialog_text = "New application version is available!"
 
 func SaveProject() -> void:
 	if %ProjectName.text.is_empty():
