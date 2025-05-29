@@ -1,0 +1,39 @@
+{
+	"disabled_build_options": {
+		"disable_3d": true,
+		"disable_3d_physics": true,
+		"disable_navigation": true,
+		"opengl3": false,
+		"openxr": false
+	},
+	"disabled_classes": [
+		"Area2D",
+		"CollisionObject2D",
+		"CollisionPolygon2D",
+		"CollisionShape2D",
+		"GPUParticles2D",
+		"Joint2D",
+		"Light2D",
+		"LightOccluder2D",
+		"MeshInstance2D",
+		"MultiMeshInstance2D",
+		"NavigationLink2D",
+		"NavigationObstacle2D",
+		"NavigationRegion2D",
+		"Node3D",
+		"Parallax2D",
+		"ParallaxLayer",
+		"Path2D",
+		"PathFollow2D",
+		"PhysicsBody2D",
+		"Polygon2D",
+		"RayCast2D",
+		"RemoteTransform2D",
+		"ShapeCast2D",
+		"Skeleton2D",
+		"TouchScreenButton",
+		"VisibleOnScreenNotifier2D",
+		"WorldEnvironment"
+	],
+	"type": "build_profile"
+}

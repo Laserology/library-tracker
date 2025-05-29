@@ -1,6 +1,63 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2xplms4le5oj"]
+[gd_scene load_steps=15 format=3 uid="uid://c2xplms4le5oj"]
 
-[ext_resource type="Script" uid="uid://dvg4l7a0bxblg" path="res://Entry.gd" id="1_iruo5"]
+[ext_resource type="Script" uid="uid://dvg4l7a0bxblg" path="res://Scripts/Entry.gd" id="1_iruo5"]
+[ext_resource type="Theme" uid="uid://c6lo3avec5fh2" path="res://Resources/Common-Theme.tres" id="2_4j5h0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iruo5"]
+bg_color = Color(0.108, 0.45, 0.108, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.658824, 0.164706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5h0"]
+bg_color = Color(0, 0.24, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.658824, 0.164706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62p0r"]
+bg_color = Color(0, 0.26, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.66, 0.165, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sq8bi"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(1, 0.569728, 0.728461, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="SystemFont" id="SystemFont_4j5h0"]
+font_weight = 800
+
+[sub_resource type="LabelSettings" id="LabelSettings_fql1b"]
+font = SubResource("SystemFont_4j5h0")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ct6j"]
 bg_color = Color(0.117647, 0.564706, 1, 1)
@@ -17,7 +74,12 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjfo2"]
-bg_color = Color(0.254902, 0.411765, 0.882353, 1)
+bg_color = Color(0.0862745, 0.121569, 0.427451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.670588, 0.882353, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -38,30 +100,12 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7ngf"]
-bg_color = Color(0.698039, 0.133333, 0.133333, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="Theme" id="Theme_tmnxg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iruo5"]
-bg_color = Color(0.133333, 0.545098, 0.133333, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j5h0"]
-bg_color = Color(0, 0.392157, 0, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62p0r"]
-bg_color = Color(0, 0.501961, 0, 1)
+bg_color = Color(0.33, 0, 0.00549992, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8, 0, 0, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -76,29 +120,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iruo5")
 
-[node name="ConfirmDelete" type="ConfirmationDialog" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 1276.0
+offset_bottom = 796.0
+color = Color(0.12, 0.12, 0.12, 1)
+
+[node name="Dialogs" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 592.0
+
+[node name="Confirm" type="ConfirmationDialog" parent="Dialogs"]
 unique_name_in_owner = true
 
-[node name="ConfirmSave" type="ConfirmationDialog" parent="."]
-unique_name_in_owner = true
-
-[node name="AboutPopup" type="AcceptDialog" parent="."]
+[node name="Dialog" type="AcceptDialog" parent="Dialogs"]
 unique_name_in_owner = true
 title = "About this software"
+size = Vector2i(933, 262)
 ok_button_text = "Dismiss"
-dialog_text = "This software is open source software, governed by the GPL-V3 software license.
 
-The purpose of this program is to streamline the work done in a local 3D print lab, though it's use may suit other cases.
-
-Software designed by Laserology. For future software support, contact help@laserology.net.
-
-https://www.github.com/Laserology/library-tracker/
-https://laserology.net/"
-
-[node name="GenericPopup" type="AcceptDialog" parent="."]
-unique_name_in_owner = true
-
-[node name="FileDialog" type="FileDialog" parent="."]
+[node name="FileDialog" type="FileDialog" parent="Dialogs"]
 unique_name_in_owner = true
 title = "Open File(s)"
 ok_button_text = "Open"
@@ -106,125 +150,137 @@ file_mode = 1
 access = 2
 use_native_dialog = true
 
-[node name="ProjectList" type="ItemList" parent="."]
-unique_name_in_owner = true
-layout_mode = 0
+[node name="BaseGrid" type="GridContainer" parent="."]
+layout_mode = 2
 offset_left = 4.0
-offset_top = 154.0
-offset_right = 300.0
-offset_bottom = 764.0
-focus_mode = 0
-
-[node name="ProjectControls" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 822.0
-offset_top = 624.0
-offset_right = 1018.0
-offset_bottom = 768.0
-
-[node name="SaveProject" type="Button" parent="ProjectControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_5ct6j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_l2j13")
-theme_override_styles/normal = SubResource("StyleBoxFlat_sjfo2")
-text = "✓ Save Project"
-
-[node name="DeleteProject" type="Button" parent="ProjectControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_otnf8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rseui")
-theme_override_styles/normal = SubResource("StyleBoxFlat_u7ngf")
-text = "X Delete Project"
-
-[node name="Button" type="Button" parent="ProjectControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-text = "About..."
-
-[node name="SaveToDisk" type="Button" parent="ProjectControls"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-disabled = true
-text = "Export Attatchments"
-
-[node name="RemoveFiles" type="Button" parent="ProjectControls"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-disabled = true
-text = "Remove Attatchments"
-
-[node name="AddFiles" type="Button" parent="ProjectControls"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_mode = 0
-text = "Add Attatchments"
-
-[node name="ProjectDetails" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 304.0
 offset_top = 4.0
-offset_right = 816.0
-offset_bottom = 516.0
+offset_right = 1276.0
+offset_bottom = 796.0
+columns = 3
 
-[node name="Label" type="Label" parent="ProjectDetails"]
+[node name="Project List" type="GridContainer" parent="BaseGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AddProject" type="Button" parent="BaseGrid/Project List"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = ExtResource("2_4j5h0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iruo5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4j5h0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_62p0r")
+text = "+ Add New"
+
+[node name="Filter Controls" type="GridContainer" parent="BaseGrid/Project List"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="SetFilter" type="Button" parent="BaseGrid/Project List/Filter Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4j5h0")
+text = "Apply Filter"
+
+[node name="ClearFilter" type="Button" parent="BaseGrid/Project List/Filter Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4j5h0")
+disabled = true
+text = "Clear Filter"
+
+[node name="SearchBox" type="LineEdit" parent="BaseGrid/Project List/Filter Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
+placeholder_text = "Enter search..."
+
+[node name="OptionButton" type="OptionButton" parent="BaseGrid/Project List/Filter Controls"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme = ExtResource("2_4j5h0")
+selected = 0
+item_count = 3
+popup/item_0/text = "Search: Project Title"
+popup/item_0/id = 0
+popup/item_1/text = "Search: Project Notes"
+popup/item_1/id = 1
+popup/item_2/text = "Search: Card Number"
+popup/item_2/id = 2
+
+[node name="ProjectList" type="ItemList" parent="BaseGrid/Project List"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="Project Fields" type="GridContainer" parent="BaseGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProjectDetails" type="GridContainer" parent="BaseGrid/Project Fields"]
+custom_minimum_size = Vector2(0, 512)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Project name"
 
-[node name="ProjectName" type="TextEdit" parent="ProjectDetails"]
+[node name="ProjectName" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = SubResource("Theme_tmnxg")
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter Project Name..."
 
-[node name="Label2" type="Label" parent="ProjectDetails"]
+[node name="Label2" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Cardholder Name"
 
-[node name="ProjectRequester" type="TextEdit" parent="ProjectDetails"]
+[node name="ProjectRequester" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter Cardholder Name..."
 
-[node name="Label3" type="Label" parent="ProjectDetails"]
+[node name="Label3" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Project ID"
 
-[node name="ProjectID" type="TextEdit" parent="ProjectDetails"]
+[node name="ProjectID" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter Project Number..."
 
-[node name="Label4" type="Label" parent="ProjectDetails"]
+[node name="Label4" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Project Platform"
 
-[node name="ProjectSource" type="OptionButton" parent="ProjectDetails"]
+[node name="ProjectSource" type="OptionButton" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
+theme = ExtResource("2_4j5h0")
 selected = 0
 item_count = 3
 popup/item_0/text = "Thingiverse"
@@ -234,145 +290,167 @@ popup/item_1/id = 1
 popup/item_2/text = "Other/Custom "
 popup/item_2/id = 2
 
-[node name="Label5" type="Label" parent="ProjectDetails"]
+[node name="Label5" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Library Card Number"
 
-[node name="CardNumber" type="TextEdit" parent="ProjectDetails"]
+[node name="CardNumber" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter Library Card..."
 
-[node name="Label6" type="Label" parent="ProjectDetails"]
+[node name="Label6" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Project Color"
 
-[node name="ProjectColor" type="TextEdit" parent="ProjectDetails"]
+[node name="ProjectColor" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter Project Color..."
 
-[node name="Label7" type="Label" parent="ProjectDetails"]
+[node name="Label7" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Aproved By"
 
-[node name="ApprovedBy" type="TextEdit" parent="ProjectDetails"]
+[node name="ApprovedBy" type="LineEdit" parent="BaseGrid/Project Fields/ProjectDetails"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Approved By..."
 
-[node name="Label8" type="Label" parent="ProjectDetails"]
+[node name="Label8" type="Label" parent="BaseGrid/Project Fields/ProjectDetails"]
 layout_mode = 2
 text = "Project Notes"
 
-[node name="ProjectNotes" type="TextEdit" parent="."]
+[node name="ProjectNotes" type="TextEdit" parent="BaseGrid/Project Fields"]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 304.0
-offset_top = 516.0
-offset_right = 816.0
-offset_bottom = 764.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
 placeholder_text = "Enter project notes..."
 
-[node name="Extras" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 820.0
-offset_top = 4.0
-offset_right = 1020.0
-offset_bottom = 260.0
-
-[node name="CheckButton" type="CheckButton" parent="Extras"]
+[node name="Side Bar" type="GridContainer" parent="BaseGrid"]
 layout_mode = 2
-focus_mode = 0
-text = "Project Completed?"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="LastUpdated" type="Label" parent="Extras"]
+[node name="Extras" type="GridContainer" parent="BaseGrid/Side Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_4j5h0")
+
+[node name="VolProj" type="Label" parent="BaseGrid/Side Bar/Extras"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_sq8bi")
+text = "This is a volenteer project!
+(No card specified)"
+label_settings = SubResource("LabelSettings_fql1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LastUpdated" type="Label" parent="BaseGrid/Side Bar/Extras"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Updated on: Never"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="LastUsedCard" type="Label" parent="Extras"]
+[node name="LastUsedCard" type="Label" parent="BaseGrid/Side Bar/Extras"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Card never used"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="FilesAdded" type="Label" parent="Extras"]
+[node name="FilesAdded" type="Label" parent="BaseGrid/Side Bar/Extras"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Contains 0 attatchments"
 
-[node name="ListControls" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 56.0
-offset_right = 300.0
-offset_bottom = 152.0
-columns = 2
+[node name="ProjectControls" type="GridContainer" parent="BaseGrid/Side Bar"]
+custom_minimum_size = Vector2(0, 144)
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="SetFilter" type="Button" parent="ListControls"]
+[node name="SaveProject" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-text = "Apply Filter"
+theme = ExtResource("2_4j5h0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5ct6j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l2j13")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sjfo2")
+text = "✓ Save Project"
 
-[node name="ClearFilter" type="Button" parent="ListControls"]
+[node name="DeleteProject" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-text = "Clear Filter"
+theme = ExtResource("2_4j5h0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_otnf8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rseui")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u7ngf")
+text = "X Delete Project"
 
-[node name="SearchBox" type="TextEdit" parent="ListControls"]
+[node name="Button" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme = ExtResource("2_4j5h0")
+text = "About..."
+
+[node name="SaveToDisk" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-placeholder_text = "Enter search..."
+focus_mode = 0
+disabled = true
+text = "Export Attatchments"
 
-[node name="OptionButton" type="OptionButton" parent="ListControls"]
+[node name="RemoveFiles" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
-focus_mode = 0
-selected = 0
-item_count = 3
-popup/item_0/text = "Title"
-popup/item_0/id = 0
-popup/item_1/text = "Description"
-popup/item_1/id = 1
-popup/item_2/text = "Card #"
-popup/item_2/id = 2
-
-[node name="AddProject" type="Button" parent="."]
-layout_mode = 2
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 300.0
-offset_bottom = 52.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_iruo5")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4j5h0")
-theme_override_styles/normal = SubResource("StyleBoxFlat_62p0r")
-text = "+ Add New"
+disabled = true
+text = "Remove Attatchments"
 
-[connection signal="confirmed" from="ConfirmDelete" to="." method="_on_confirm_delete_confirmed"]
-[connection signal="confirmed" from="ConfirmSave" to="." method="_on_confirmation_dialog_confirmed"]
-[connection signal="files_selected" from="FileDialog" to="." method="_on_file_dialog_files_selected"]
-[connection signal="item_clicked" from="ProjectList" to="." method="_on_project_list_item_clicked"]
-[connection signal="button_up" from="ProjectControls/SaveProject" to="." method="_on_save_project_button_up"]
-[connection signal="button_up" from="ProjectControls/DeleteProject" to="." method="_on_delete_project_button_up"]
-[connection signal="button_up" from="ProjectControls/Button" to="." method="_on_button_button_up"]
-[connection signal="pressed" from="ProjectControls/SaveToDisk" to="." method="_on_save_to_disk_pressed"]
-[connection signal="pressed" from="ProjectControls/RemoveFiles" to="." method="_on_remove_files_pressed"]
-[connection signal="pressed" from="ProjectControls/AddFiles" to="." method="_on_add_files_pressed"]
-[connection signal="button_up" from="ListControls/SetFilter" to="." method="_on_set_filter_button_up"]
-[connection signal="button_up" from="ListControls/ClearFilter" to="." method="_on_clear_filter_button_up"]
-[connection signal="button_up" from="AddProject" to="." method="_on_add_project_button_up"]
+[node name="AddFiles" type="Button" parent="BaseGrid/Side Bar/ProjectControls"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+text = "Add Attatchments"
+
+[connection signal="files_selected" from="Dialogs/FileDialog" to="." method="_on_file_dialog_files_selected"]
+[connection signal="button_up" from="BaseGrid/Project List/AddProject" to="." method="_on_add_project_button_up"]
+[connection signal="button_up" from="BaseGrid/Project List/Filter Controls/SetFilter" to="." method="_on_set_filter_button_up"]
+[connection signal="button_up" from="BaseGrid/Project List/Filter Controls/ClearFilter" to="." method="_on_clear_filter_button_up"]
+[connection signal="item_clicked" from="BaseGrid/Project List/ProjectList" to="." method="_on_project_list_item_clicked"]
+[connection signal="button_up" from="BaseGrid/Side Bar/ProjectControls/SaveProject" to="." method="_on_save_project_button_up"]
+[connection signal="button_up" from="BaseGrid/Side Bar/ProjectControls/DeleteProject" to="." method="_on_delete_project_button_up"]
+[connection signal="button_up" from="BaseGrid/Side Bar/ProjectControls/Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="BaseGrid/Side Bar/ProjectControls/SaveToDisk" to="." method="_on_save_to_disk_pressed"]
+[connection signal="pressed" from="BaseGrid/Side Bar/ProjectControls/RemoveFiles" to="." method="_on_remove_files_pressed"]
+[connection signal="pressed" from="BaseGrid/Side Bar/ProjectControls/AddFiles" to="." method="_on_add_files_pressed"]

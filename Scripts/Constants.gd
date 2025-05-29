@@ -15,6 +15,7 @@ const PROJECT_COLOR = "ProjectColor"
 const SIGNATURE = "ApprovedBy"
 const LAST_UPDATED = "LastUpdated"
 const ATTATCHMENTS = "AttatchedFiles"
+const VOLENTEER = "VolenteerProjectIndicator"
 
 const EMPTYATTATCHMENT = {"":""}
 
